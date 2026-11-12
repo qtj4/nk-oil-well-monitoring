@@ -1,0 +1,10 @@
+well_id,issue,before_n,after_n,before_median,after_median,ratio,zero_fraction
+NK-68,May area scale,72.0,0,16863.95512601742,,,
+NK-7,May area scale,72.0,0,3417.9994927822772,,,
+NK-77,May area scale,72.0,0,16911.795879136655,,,
+NK-82,May area scale,72.0,0,6595.318499521162,,,
+NK-86,May area scale,72.0,0,9600.853847368524,,,
+NK-91,May area scale,72.0,0,12688.544956398306,,,
+NK-93,May area scale,72.0,0,4272.404241622728,,,
+NK-7,SPM May,,72,,5.718333333333334,,0.0
+NK-7,SPM June,,72,,0.0,,0.9027777777777778

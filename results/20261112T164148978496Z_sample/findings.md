@@ -1,0 +1,3 @@
+# Measured run 20261112T164148978496Z_sample
+
+85,423 source rows; 10 wells. 73,302 train and 12,121 test records. All eight SQL queries ran and pivot numeric values reconciled exactly. Known-issue evidence: known_issues.csv. Methods: methods_comparison.csv. No supervised accuracy is identifiable without ground truth. Sample selection gaps are not source outages. Area is excluded from main detector runs; sensitivity exports retain it or retain flags. Training-era events use training-wide reference statistics and are descriptive; only test-era events support frozen-reference temporal evaluation. No physical cause is established.

@@ -1,0 +1,7 @@
+flag,records,wells
+,83356,10
+weight_overflow,1197,3
+area_negative,853,6
+area_extreme;area_negative,14,2
+area_extreme,2,1
+spm_outlier,1,1

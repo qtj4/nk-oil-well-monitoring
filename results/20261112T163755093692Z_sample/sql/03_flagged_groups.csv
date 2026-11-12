@@ -1,0 +1,11 @@
+well_id,parameter,records,flagged,flagged_fraction
+NK-7,SPM,628,1,0.0015923566878980893
+NK-7,dynamometer_area,479,185,0.3862212943632568
+NK-7,max_rod_weight,628,188,0.29936305732484075
+NK-7,min_rod_weight,628,81,0.12898089171974522
+NK-77,dynamometer_area,566,1,0.0017667844522968198
+NK-82,dynamometer_area,512,1,0.001953125
+NK-86,dynamometer_area,564,10,0.01773049645390071
+NK-86,max_rod_weight,566,9,0.015901060070671377
+NK-86,min_rod_weight,566,3,0.00530035335689046
+NK-93,dynamometer_area,563,1,0.0017761989342806395

@@ -1,0 +1,5 @@
+{
+  "run_id": "20261112T164148978496Z_sample",
+  "rows": 85423,
+  "output": "C:\\Users\\LAPTOPE\\Documents\\Codex\\2026-11-12\\files-mentioned-by-the-user-00\\outputs\\nk_oil\\results\\20261112T164148978496Z_sample"
+}

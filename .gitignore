@@ -6,3 +6,5 @@ data/raw/*.csv
 data/processed/
 *.sqlite*
 *.log
+results/**/*.html
+results/**/sql/05_causal_rolling.csv

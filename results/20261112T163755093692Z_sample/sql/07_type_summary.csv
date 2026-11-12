@@ -1,0 +1,9 @@
+well_type,parameter,unit,wells,records,mean_value,null_values
+fountain,casing_pressure,atm,2,1116,19.02811650167833,0
+fountain,line_pressure,atm,3,1435,4.116836153973785,0
+fountain,tubing_pressure,atm,3,1848,10.13683950474129,0
+sucker_rod_pump,SPM,strokes/min,7,4227,5.07260497978098,0
+sucker_rod_pump,dynamometer_area,unitless,7,3745,83944.62848016463,0
+sucker_rod_pump,max_rod_weight,kg,7,4311,10688.707210664154,0
+sucker_rod_pump,min_rod_weight,kg,7,4311,7872.882276119715,0
+sucker_rod_pump,pump_fillage,%,7,3745,45.6526797474897,0

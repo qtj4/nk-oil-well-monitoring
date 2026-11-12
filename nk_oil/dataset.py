@@ -43,8 +43,8 @@ def read_csv(path, sample=False):
     for chunk in pd.read_csv(path, chunksize=25000):
         if sample:
             ts = pd.to_datetime(chunk.timestamp, errors='raise')
-            # 72 contiguous hours in every month: all wells, all source parameters.
-            chunk = chunk[ts.dt.day <= 3]
+            # 10 contiguous days/month include May 8 and support detector warmup.
+            chunk = chunk[ts.dt.day <= 10]
         if not chunk.empty:
             parts.append(chunk)
     return validate(pd.concat(parts, ignore_index=True)) if parts else validate(pd.DataFrame(columns=COLUMNS))

@@ -1,0 +1,28 @@
+{
+  "rows": 24738,
+  "wells": 10,
+  "duplicates": 0,
+  "null_values": 0,
+  "start": "2026-01-01 00:00:00",
+  "end": "2026-09-03 23:00:00",
+  "flags": {
+    "": 24258,
+    "weight_overflow": 281,
+    "area_negative": 189,
+    "area_extreme;area_negative": 7,
+    "area_extreme": 2,
+    "spm_outlier": 1
+  },
+  "mode": "sample",
+  "sample_selection": "first 72 hours of each month",
+  "train_rows": 21722,
+  "test_rows": 3016,
+  "long_memory_mb": 1.124105,
+  "wide_rows": 6226,
+  "reconciled_nonnull_values": 24738,
+  "sql_rows": 24738,
+  "parquet_bytes": 210893,
+  "source_bytes": 19845754,
+  "missing_slot_note": "Sample gaps include intentionally excluded dates",
+  "timezone": "naive; undocumented by provider"
+}

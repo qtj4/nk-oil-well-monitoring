@@ -17,4 +17,7 @@ Statuses are phase-specific; future features remain planned until tested.
 
 Weights overlap requirements and must not be summed. Rubric totals: software 20, data 15, DB 10, EDA 15, methods 15, reproducibility 10, report 5, defense 10 = 100.
 
+## Phase 2 tested coverage
+R1–R9 and R11 implemented/tested on real monthly sample (85,423 rows): `pipeline.py`, `analytics.py`, `quality.py`, `methods.py`, `charts.py`, `app.py`, eight `sql/queries/*.sql`; `test_analysis.py` and `test_app.py` provide invariants and UI smoke evidence. Run exports reconcile every nonnull pivot value and SQL count. Five HTML charts, quality, issue measurements and method comparisons are generated. 13 tests pass. R4 size recommendation remains unsatisfied by source; full validation pending phase 3. R10 final academic report/slides remain phase 4 work. No scientific detection accuracy claimed.
+
 Phase 1 gate: R1/R5/R11 tested on bounded real source and synthetic unit fixtures; R3 single-query SQLite roundtrip tested. 7 tests pass. Remaining requirements stay planned as described above.

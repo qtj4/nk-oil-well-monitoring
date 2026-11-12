@@ -9,7 +9,7 @@ def connect(path):
     return con
 
 
-def build(df, path):
+def build(df, path, replace_snapshot=False):
     with connect(path) as con:
         con.executescript('''
         CREATE TABLE IF NOT EXISTS wells(well_id TEXT PRIMARY KEY, well_type TEXT NOT NULL);
@@ -19,7 +19,15 @@ def build(df, path):
           timestamp TEXT, value REAL, n_obs INTEGER, flag TEXT, split TEXT,
           PRIMARY KEY(well_id,parameter,timestamp));
         CREATE INDEX IF NOT EXISTS obs_time ON observations(timestamp);
+        CREATE TABLE IF NOT EXISTS flag_types(flag TEXT PRIMARY KEY);
+        CREATE TABLE IF NOT EXISTS observation_flags(
+          well_id TEXT,parameter TEXT,timestamp TEXT,flag TEXT REFERENCES flag_types,
+          PRIMARY KEY(well_id,parameter,timestamp,flag),
+          FOREIGN KEY(well_id,parameter,timestamp) REFERENCES observations(well_id,parameter,timestamp));
         ''')
+        if replace_snapshot:
+            con.execute('DELETE FROM observation_flags')
+            con.execute('DELETE FROM observations')
         for col, table, fields in [('well_id', 'wells', ['well_id', 'well_type']),
                                    ('parameter', 'parameters', ['parameter', 'unit'])]:
             dim = df[fields].drop_duplicates()
@@ -31,8 +39,17 @@ def build(df, path):
         if 'split' not in rows:
             rows['split'] = 'train'
         rows = rows[['well_id', 'parameter', 'timestamp', 'value', 'n_obs', 'flag', 'split']]
-        con.executemany('INSERT OR REPLACE INTO observations VALUES (?,?,?,?,?,?,?)',
+        con.executemany('''INSERT INTO observations VALUES (?,?,?,?,?,?,?)
+ON CONFLICT(well_id,parameter,timestamp) DO UPDATE SET value=excluded.value,
+n_obs=excluded.n_obs,flag=excluded.flag,split=excluded.split''',
                         rows.astype(object).where(rows.notna(), None).itertuples(index=False, name=None))
+        for row in rows[rows.flag != ''].itertuples(index=False):
+            con.execute('DELETE FROM observation_flags WHERE well_id=? AND parameter=? AND timestamp=?',
+                        (row.well_id, row.parameter, row.timestamp))
+            for flag in str(row.flag).split(';'):
+                con.execute('INSERT OR IGNORE INTO flag_types VALUES (?)', (flag,))
+                con.execute('INSERT OR IGNORE INTO observation_flags VALUES (?,?,?,?)',
+                            (row.well_id, row.parameter, row.timestamp, flag))
 
 
 def query(path, sql, params=()):

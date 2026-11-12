@@ -1,0 +1,35 @@
+{
+  "run_id": "20261112T164148978496Z_sample",
+  "generated_utc": "2026-11-12T16:41:48.978496+00:00",
+  "mode": "sample",
+  "data_hash": "090469ac34108e57f0a3c8a7ae81d40e29699f75d265512826d9ea14a3043c19",
+  "source_revision": "4004bb78ca8811a87c2892a89e457c59d22ace2b",
+  "source_hashes": {
+    "train": "8bf92fd97ac9b0d7ec2e7aa61be90f335c7f3b6ab2a84634fb8758b057efe26a",
+    "test": "8029113613ea2965cb94fc7bea50eee6f4c327b673ecc856d88d25dfb652c7d6"
+  },
+  "commit": "b9c0cdcbe8a1ea2d548181fabb2bfb01822f1b89",
+  "python": "3.12.6",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "sqlite": "3.45.3",
+  "packages": {
+    "pandas": "3.1.1",
+    "numpy": "2.5.4",
+    "pyarrow": "26.0.1",
+    "streamlit": "1.67.0",
+    "plotly": "7.1.0"
+  },
+  "cutoff": "2026-08-08 23:00:00",
+  "excluded_daily_bin": "2026-08-08",
+  "random_seed": 0,
+  "gpu_used": false,
+  "config": {
+    "daily_min_records": 12,
+    "rolling_days": 3,
+    "cooldown_days": 7,
+    "rolling_threshold": 3,
+    "cusum_threshold": 5,
+    "cusum_drift": 0.5
+  },
+  "memory_measurement": "10 ms process RSS polling; absolute peak includes runtime; may miss short peaks"
+}
