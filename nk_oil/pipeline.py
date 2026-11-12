@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 
 import pandas as pd
 
-from .analytics import known_issues, summaries, daily_patterns
+from .analytics import known_issues, summaries, daily_patterns, nk7_monthly
 from .charts import figures
 from .config import ROOT, CUTOFF, paths
 from .database import build, query
@@ -100,6 +100,7 @@ def execute(mode, phase1=False):
     (target / 'quality.json').write_text(json.dumps(summary, indent=2))
     coverage(df).to_csv(output / 'quality_report.csv', index=False)
     known_issues(df).to_csv(output / 'known_issues.csv', index=False)
+    nk7_monthly(df).to_csv(output / 'nk7_monthly_evidence.csv', index=False)
     summaries(df).to_csv(output / 'descriptive_statistics.csv', index=False)
     daily_patterns(df).to_csv(output / 'daily_patterns.csv', index=False)
     events, comparison, daily = compare(df, data_hash)

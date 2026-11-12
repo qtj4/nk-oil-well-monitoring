@@ -23,4 +23,7 @@ R1–R9 and R11 implemented/tested on real monthly sample (85,423 rows): `pipeli
 ## Phase 2.5
 P0 A/B/C and P1 option 2 verified: `events.py`, `reporting.py`, `enhancements.py`, integrated `app.py`; `test_product.py` tests persistence/idempotence/history/status validation/well ownership, report sections/escaping/offline chart assets and UI review→reload→report/preset selection. 17 total tests pass. Real characterization CSV and measured costs exported. Strengthens software (20), methods interpretation (15), reproducibility (10), defense (10), without exceeding rubric maxima or replacing mandatory features. Full-data testing remains phase 3.
 
+## Phase 3
+R1–R9/R11 verified on full source with `test_full.py`, all prior tests and `results/phase3_*` logs. Reproduced run `20261112T171150743233Z_full`: 258,387 rows; pivot/SQLite counts reconcile; source file hashes verify; all seven UI tabs/filter/report paths run. 19 total tests. `docs/full_data_validation.md` records exact measured costs and source-card discrepancy for NK-7 May onset. R4 only size recommendation remains externally unresolved. R10 final report/slides and objective delivery audit remain phase 4. No GPU use, official ground truth or public submission claimed.
+
 Phase 1 gate: R1/R5/R11 tested on bounded real source and synthetic unit fixtures; R3 single-query SQLite roundtrip tested. 7 tests pass. Remaining requirements stay planned as described above.

@@ -106,6 +106,10 @@ with tabs[1]:
 with tabs[2]:
     st.warning('May area scaling is a possible calibration artifact; NK-7 June behavior has several possible explanations. Neither is a verified fault.')
     st.dataframe(pd.read_csv(output / 'known_issues.csv'))
+    monthly_path = output / 'nk7_monthly_evidence.csv'
+    if monthly_path.exists():
+        st.write('NK-7 monthly evidence — inspect actual timing rather than assuming the card establishes an exact June onset:')
+        st.dataframe(pd.read_csv(monthly_path))
     st.dataframe(pd.read_csv(output / 'quality_report.csv'))
     st.plotly_chart(figs['quality'], key='quality_heatmap')
     gaps = pd.read_csv(output / 'sql/04_gaps.csv')

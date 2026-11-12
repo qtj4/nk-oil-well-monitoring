@@ -34,3 +34,11 @@ def known_issues(df):
         rows.append({'well_id': 'NK-7', 'issue': f'SPM {label}', 'after_n': len(values),
                      'after_median': values.median(), 'zero_fraction': float((values == 0).mean())})
     return pd.DataFrame(rows)
+
+
+def nk7_monthly(df):
+    selected = df[(df.well_id == 'NK-7') & df.parameter.isin(['SPM', 'dynamometer_area'])].copy()
+    selected['month'] = selected.timestamp.dt.strftime('%Y-%m')
+    return selected.groupby(['parameter', 'month'], observed=True).value.agg(
+        records='size', median='median', mean='mean', zero_fraction=lambda x: (x == 0).mean(),
+        negative_fraction=lambda x: (x < 0).mean()).reset_index()
