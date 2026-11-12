@@ -20,4 +20,7 @@ Weights overlap requirements and must not be summed. Rubric totals: software 20,
 ## Phase 2 tested coverage
 R1–R9 and R11 implemented/tested on real monthly sample (85,423 rows): `pipeline.py`, `analytics.py`, `quality.py`, `methods.py`, `charts.py`, `app.py`, eight `sql/queries/*.sql`; `test_analysis.py` and `test_app.py` provide invariants and UI smoke evidence. Run exports reconcile every nonnull pivot value and SQL count. Five HTML charts, quality, issue measurements and method comparisons are generated. 13 tests pass. R4 size recommendation remains unsatisfied by source; full validation pending phase 3. R10 final academic report/slides remain phase 4 work. No scientific detection accuracy claimed.
 
+## Phase 2.5
+P0 A/B/C and P1 option 2 verified: `events.py`, `reporting.py`, `enhancements.py`, integrated `app.py`; `test_product.py` tests persistence/idempotence/history/status validation/well ownership, report sections/escaping/offline chart assets and UI review→reload→report/preset selection. 17 total tests pass. Real characterization CSV and measured costs exported. Strengthens software (20), methods interpretation (15), reproducibility (10), defense (10), without exceeding rubric maxima or replacing mandatory features. Full-data testing remains phase 3.
+
 Phase 1 gate: R1/R5/R11 tested on bounded real source and synthetic unit fixtures; R3 single-query SQLite roundtrip tested. 7 tests pass. Remaining requirements stay planned as described above.

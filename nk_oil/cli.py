@@ -9,7 +9,7 @@ from .quality import audit
 
 def main():
     parser = argparse.ArgumentParser(description='NK historical oil-well analytics')
-    parser.add_argument('command', choices=['fetch', 'prepare', 'inspect', 'init-db', 'queries', 'analyze'])
+    parser.add_argument('command', choices=['fetch', 'prepare', 'inspect', 'init-db', 'queries', 'analyze', 'enhance'])
     parser.add_argument('--mode', choices=['sample', 'full'], default='sample')
     parser.add_argument('--phase1', action='store_true', help='Use bounded first source slice')
     args = parser.parse_args()
@@ -18,7 +18,10 @@ def main():
         return
     target = paths(args.mode)
     try:
-        if args.command == 'inspect':
+        if args.command == 'enhance':
+            from .enhancements import enhance
+            enhance(args.mode)
+        elif args.command == 'inspect':
             print(json.dumps(audit(load_source(args.mode, args.phase1)), indent=2))
         elif args.command == 'queries':
             tables = run_queries(target / 'analysis.sqlite', ROOT / 'results' / f'sql_{args.mode}')

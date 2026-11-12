@@ -11,3 +11,5 @@ flowchart LR
   DB --> UI[Streamlit and Plotly]
   Methods --> UI
 ```
+
+Phase 2.5: immutable main event CSV → idempotent `events.ingest` → separate persistent review SQLite (analysis_runs/events/event_runs/alert_reviews). This preserves analyst work across observation snapshot rebuilds. `characterize` produces retrospective explainability CSV; the app reads it without fitting a model. `reporting.diagnostic` joins selected observations and reviewed events into escaped, self-contained HTML with embedded chart assets. No network required after preparation.

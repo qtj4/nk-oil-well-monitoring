@@ -1,0 +1,8 @@
+# Analyst workflow
+Select historical mode, scenario/well/parameter and dates. Inspect raw trend and source flags, then candidate method markers. Main review queue uses 100% frozen thresholds only. Filter status/method and select an event; read score, daily value and retrospective 7-day context. Set unreviewed/confirmed/dismissed/needs_investigation and optional note, save; SQLite retains the result across reloads. "Confirmed" is analyst confirmation of a candidate, not an externally verified equipment label.
+
+Generate diagnostic in SQL & reports; download offline HTML including embedded Plotly, sensor summaries, coverage, flag context, method comparison, reviews and exact run/data/source/config provenance. Regenerate after changing a review; a previously downloaded report is a timestamped snapshot. Export filtered reviews as CSV/JSON.
+
+Persistence: `data/reviews.sqlite`, schema_versions=1, analysis_runs, events, event_runs, alert_reviews. event_id hashes data fingerprint + frozen config + method + well/parameter/bin timestamp. Identical data/config reproduces event IDs; event_runs preserves run association. Different mode/data/config gets separate IDs. Reindexing is idempotent and never deletes notes/history. A review update replaces current status/note for its event; this is not a multi-user audit log. Parameterized SQL, status enum, 4,000-character note bound, HTML escaping. No remote auth or multi-tenant hardening.
+
+Local CLI: `python -m nk_oil.cli enhance --mode sample` indexes main events and exports explanations/report. The app may idempotently index precomputed events, but never trains detectors on rerun. Absent explanations prompt the command; empty event sets are handled explicitly.

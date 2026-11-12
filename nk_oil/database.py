@@ -43,6 +43,9 @@ def build(df, path, replace_snapshot=False):
 ON CONFLICT(well_id,parameter,timestamp) DO UPDATE SET value=excluded.value,
 n_obs=excluded.n_obs,flag=excluded.flag,split=excluded.split''',
                         rows.astype(object).where(rows.notna(), None).itertuples(index=False, name=None))
+        if not replace_snapshot:
+            con.executemany('DELETE FROM observation_flags WHERE well_id=? AND parameter=? AND timestamp=?',
+                            rows[['well_id', 'parameter', 'timestamp']].itertuples(index=False, name=None))
         for row in rows[rows.flag != ''].itertuples(index=False):
             con.execute('DELETE FROM observation_flags WHERE well_id=? AND parameter=? AND timestamp=?',
                         (row.well_id, row.parameter, row.timestamp))
