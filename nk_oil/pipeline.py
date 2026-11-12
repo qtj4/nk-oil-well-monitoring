@@ -18,6 +18,14 @@ from .quality import audit, coverage
 from .transform import to_wide
 
 
+def git_revision():
+    try:
+        result = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=ROOT, capture_output=True, text=True)
+        return result.stdout.strip() if result.returncode == 0 else 'unavailable (source archive)'
+    except OSError:
+        return 'unavailable (git not installed)'
+
+
 def load_source(mode, phase1=False):
     if phase1:
         return read_csv(ROOT / 'data/sample/phase1_source.csv')
@@ -127,7 +135,10 @@ def execute(mode, phase1=False):
                 if not phase1 and all((ROOT / f'data/raw/{s}.csv').exists() for s in ['train', 'test'])
                 else {'cached_slice': fingerprint(ROOT / 'data/sample/phase1_source.csv' if phase1 else
                                                   'data/sample/monthly_source.parquet')},
-                'commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
+                'commit': git_revision(),
+                'code_hashes': {str(p.relative_to(ROOT)): fingerprint(p)
+                                for p in [ROOT / 'app.py', *sorted((ROOT / 'nk_oil').glob('*.py')),
+                                          *sorted((ROOT / 'sql/queries').glob('*.sql'))]},
                 'python': platform.python_version(), 'platform': platform.platform(), 'sqlite': sqlite3.sqlite_version,
                 'packages': {name: importlib.metadata.version(name) for name in ['pandas', 'numpy', 'pyarrow', 'streamlit', 'plotly']},
                 'cutoff': CUTOFF, 'excluded_daily_bin': '2026-08-08', 'random_seed': 0,

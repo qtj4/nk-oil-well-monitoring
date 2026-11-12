@@ -1,13 +1,28 @@
 import plotly.express as px
+import pandas as pd
 
 from .analytics import correlation, daily_patterns
+
+
+def break_gaps(frame, values):
+    """Insert chart-only NULL separators; never alter source values or analytical tables."""
+    ordered = frame.sort_values('timestamp').copy()
+    gaps = ordered.timestamp.diff() > pd.Timedelta(hours=1)
+    if not gaps.any():
+        return ordered
+    separators = ordered.loc[gaps].copy()
+    separators['timestamp'] = ordered.timestamp.shift().loc[gaps] + pd.Timedelta(hours=1)
+    for name in values:
+        separators[name] = float('nan')
+    return pd.concat([ordered, separators], ignore_index=True).sort_values('timestamp')
 
 
 def figures(df, well, parameter):
     selected = df[(df.well_id == well) & (df.parameter == parameter)].sort_values('timestamp').copy()
     unit = str(selected.unit.iloc[0]) if len(selected) else ''
     selected['prior_24_records_mean'] = selected.value.shift(1).rolling(24, min_periods=6).mean()
-    trend = px.line(selected, x='timestamp', y=['value', 'prior_24_records_mean'],
+    plot_data = break_gaps(selected, ['value', 'prior_24_records_mean'])
+    trend = px.line(plot_data, x='timestamp', y=['value', 'prior_24_records_mean'],
                     title=f'{well} · {parameter} ({unit}) · source observations')
     trend.update_yaxes(title=f'{parameter} ({unit})')
     group = df[df.parameter == parameter]

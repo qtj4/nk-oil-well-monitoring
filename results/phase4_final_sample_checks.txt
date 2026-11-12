@@ -1,0 +1,52 @@
+COMMAND: python -m nk_oil.cli --help
+usage: cli.py [-h] [--mode {sample,full}] [--phase1]
+              {fetch,prepare,inspect,init-db,queries,analyze,enhance}
+
+NK historical oil-well analytics
+
+positional arguments:
+  {fetch,prepare,inspect,init-db,queries,analyze,enhance}
+
+options:
+  -h, --help            show this help message and exit
+  --mode {sample,full}
+  --phase1              Use bounded first source slice
+EXIT: 0
+COMMAND: python -m nk_oil.cli inspect --mode sample
+{
+  "rows": 85423,
+  "wells": 10,
+  "duplicates": 0,
+  "null_values": 0,
+  "start": "2026-01-01 00:00:00",
+  "end": "2026-09-10 23:00:00",
+  "flags": {
+    "": 83356,
+    "weight_overflow": 1197,
+    "area_negative": 853,
+    "area_extreme;area_negative": 14,
+    "area_extreme": 2,
+    "spm_outlier": 1
+  }
+}
+EXIT: 0
+COMMAND: python -m nk_oil.cli prepare --mode sample
+{
+  "run_id": "20261112T175323029578Z_sample",
+  "rows": 85423,
+  "output": "C:\\Users\\LAPTOPE\\Documents\\Codex\\2026-11-12\\files-mentioned-by-the-user-00\\outputs\\nk_oil\\results\\20261112T175323029578Z_sample"
+}
+EXIT: 0
+COMMAND: python -m nk_oil.cli enhance --mode sample
+Indexed 215 candidate events for 20261112T175323029578Z_sample; characterization and offline HTML report saved.
+EXIT: 0
+COMMAND: python -m nk_oil.cli queries --mode sample
+{'01_coverage': 43, '02_monthly': 379, '03_flagged_groups': 12, '04_gaps': 917, '05_causal_rolling': 85423, '06_flags': 6, '07_type_summary': 8, '08_latest': 43}
+EXIT: 0
+COMMAND: python -m pytest -q
+.....................                                                    [100%]
+21 passed in 17.77s
+EXIT: 0
+COMMAND: python -m ruff check .
+All checks passed!
+EXIT: 0

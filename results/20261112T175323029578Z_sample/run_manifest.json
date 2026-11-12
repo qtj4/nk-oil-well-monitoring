@@ -1,0 +1,61 @@
+{
+  "run_id": "20261112T175323029578Z_sample",
+  "generated_utc": "2026-11-12T17:53:23.029578+00:00",
+  "mode": "sample",
+  "data_hash": "090469ac34108e57f0a3c8a7ae81d40e29699f75d265512826d9ea14a3043c19",
+  "source_revision": "4004bb78ca8811a87c2892a89e457c59d22ace2b",
+  "source_hashes": {
+    "train": "8bf92fd97ac9b0d7ec2e7aa61be90f335c7f3b6ab2a84634fb8758b057efe26a",
+    "test": "8029113613ea2965cb94fc7bea50eee6f4c327b673ecc856d88d25dfb652c7d6"
+  },
+  "commit": "e876a698455b08ebce7c7ac1f897c8bb20c2a063",
+  "code_hashes": {
+    "app.py": "85abb269b04c8dd60d5004401b228bb98be04ae1a4d1ead14ba438cb1314bedf",
+    "nk_oil\\__init__.py": "d9758b8391031a92eecf07544bdda6732fe09c34ade051605ccd72027a928d83",
+    "nk_oil\\analytics.py": "23de7b143178249ac94388ada1e127cdbfa596a96692c9ee553bcec6ad5a335c",
+    "nk_oil\\charts.py": "0a9719efcb7c1c13f0684e51a69493797013b22140298fc804f0c3635a3f5cea",
+    "nk_oil\\cli.py": "f58741bfb2211f0102a6977b57847eee54229abc8c415a23b520ce6ded406533",
+    "nk_oil\\config.py": "771cfbd5f264fe5913aa8675b0ec2fa0cd54b788a7a630dde9d10065d4f1c372",
+    "nk_oil\\database.py": "b01a4f4482980e1b552dd8b4203fd77000bdc35de1237e5a176b3b31a5002b4a",
+    "nk_oil\\dataset.py": "4ee2dc8f733d3d8209b598313f50bbc8542cdaeb349f31efefad3af9143dd36f",
+    "nk_oil\\enhancements.py": "d20f8fb30122809b256ae16ac72b9623f1e5fea4f7590f511841a2fa28b8657e",
+    "nk_oil\\events.py": "17c89ef081ce8d0c48272408ad2a35fa06fafc8e0fa34859f12a0de92721bf04",
+    "nk_oil\\methods.py": "45040052ba606509ff1971ed244bcffb9253d0a84b6967c6ccd6c0c33765fdf6",
+    "nk_oil\\performance.py": "3376cf5ddf9f744781d5f3092bf01bb4583fe13d5ce87e4eeb04aa55083c4b33",
+    "nk_oil\\pipeline.py": "8e803207ec4f3659337aafc7117a01bca588143fbe342312cea2cbbdba1ea561",
+    "nk_oil\\quality.py": "790ebd7cbd651d11976f0c349e0d7382ff7195d228fdb78dee4600c50fcbf51d",
+    "nk_oil\\reporting.py": "ae183e7361a015ba22ca426869fa5f205fe684b4927869191786768e00d61c27",
+    "nk_oil\\transform.py": "2a82ccc86d0ab3c89d73fe171c32036d504a654add7588006b272d9223ee8e20",
+    "sql\\queries\\01_coverage.sql": "3d98bda22eaf670db0ddca0ac7b5ce25cf724809313cfd3d2f2eda5213598ca0",
+    "sql\\queries\\02_monthly.sql": "c29ea1b508e76d71d175888cd42c9c164dc67d94bc1353b7ee3e26165db7f4a4",
+    "sql\\queries\\03_flagged_groups.sql": "c98b4c2b04811c655e507569ca3ccb3dabf9a95d9ef60b5a599dfa64ba20e2bd",
+    "sql\\queries\\04_gaps.sql": "d1fdbca891847bd256c729cdaa60a8aa120228dfca61f0b890fbc73aa7b22355",
+    "sql\\queries\\05_causal_rolling.sql": "db03a910951a012fed7f9bbe7c499f2b5e78f1fc937c3397fae560a50f43c7bc",
+    "sql\\queries\\06_flags.sql": "eef18639fa4f932cf64012501a3d616c478525a4f1bb2006ce5cf6b02296ff11",
+    "sql\\queries\\07_type_summary.sql": "65c67d88738ae66fa46ebf173d4e0a334f1ec90cd88444f9c47688d01ba219e6",
+    "sql\\queries\\08_latest.sql": "d18f3c4285f67523178be756e6442e5802f8a7b3b786c84eef52baebe97b1c35"
+  },
+  "python": "3.12.6",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "sqlite": "3.45.3",
+  "packages": {
+    "pandas": "3.1.1",
+    "numpy": "2.5.4",
+    "pyarrow": "26.0.1",
+    "streamlit": "1.67.0",
+    "plotly": "7.1.0"
+  },
+  "cutoff": "2026-08-08 23:00:00",
+  "excluded_daily_bin": "2026-08-08",
+  "random_seed": 0,
+  "gpu_used": false,
+  "config": {
+    "daily_min_records": 12,
+    "rolling_days": 3,
+    "cooldown_days": 7,
+    "rolling_threshold": 3,
+    "cusum_threshold": 5,
+    "cusum_drift": 0.5
+  },
+  "memory_measurement": "10 ms process RSS polling; absolute peak includes runtime; may miss short peaks"
+}

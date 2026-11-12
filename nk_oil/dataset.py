@@ -28,7 +28,10 @@ def validate(frame):
     if np.isinf(df.value).any():
         raise ValueError('Infinite sensor value')
     df['flag'] = df.flag.fillna('')
-    df['n_obs'] = pd.to_numeric(df.n_obs, errors='raise').astype('int32')
+    counts = pd.to_numeric(df.n_obs, errors='raise')
+    if counts.isna().any() or ((counts % 1) != 0).any() or (counts > np.iinfo('int32').max).any():
+        raise ValueError('n_obs must be a finite positive integer')
+    df['n_obs'] = counts.astype('int32')
     if (df.n_obs < 1).any():
         raise ValueError('n_obs must be positive')
     for col in ['well_id', 'well_type', 'parameter', 'unit', 'flag']:

@@ -5,6 +5,8 @@ from datetime import datetime, timezone
 import pandas as pd
 import plotly.express as px
 
+from .charts import break_gaps
+
 
 def diagnostic(data, events, comparison, manifest, well, parameter, begin, finish):
     selected = data[(data.well_id == well) & (data.timestamp >= pd.Timestamp(begin))
@@ -15,7 +17,7 @@ def diagnostic(data, events, comparison, manifest, well, parameter, begin, finis
                      & (pd.to_datetime(events.timestamp) < pd.Timestamp(finish))] if len(events) else events
     signal = selected[selected.parameter == parameter].sort_values('timestamp')
     unit = str(signal.unit.iloc[0]) if len(signal) else ''
-    chart = px.line(signal, x='timestamp', y='value', title=f'{well} · {parameter} ({unit})')
+    chart = px.line(break_gaps(signal, ['value']), x='timestamp', y='value', title=f'{well} · {parameter} ({unit})')
     stats = selected.groupby(['parameter', 'unit'], observed=True).value.agg(['count', 'mean', 'median', 'std', 'min', 'max'])
     flags = selected.groupby(['parameter', 'flag'], observed=True).size().reset_index(name='records')
     coverage = selected.groupby('parameter', observed=True).agg(records=('timestamp', 'size'),

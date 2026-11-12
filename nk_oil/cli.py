@@ -1,7 +1,7 @@
 import argparse
 import json
 
-from .config import ROOT, paths
+from .config import MODE, ROOT, paths
 from .dataset import fetch
 from .pipeline import execute, load_source, run_queries
 from .quality import audit
@@ -11,7 +11,7 @@ from .performance import measure
 def main():
     parser = argparse.ArgumentParser(description='NK historical oil-well analytics')
     parser.add_argument('command', choices=['fetch', 'prepare', 'inspect', 'init-db', 'queries', 'analyze', 'enhance'])
-    parser.add_argument('--mode', choices=['sample', 'full'], default='sample')
+    parser.add_argument('--mode', choices=['sample', 'full'], default=MODE)
     parser.add_argument('--phase1', action='store_true', help='Use bounded first source slice')
     args = parser.parse_args()
     if args.command == 'fetch':

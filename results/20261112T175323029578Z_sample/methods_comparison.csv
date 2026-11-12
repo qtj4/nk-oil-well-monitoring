@@ -1,0 +1,4 @@
+method,test_events,train_events,test_daily_units,test_events_per_100_days,test_events_threshold_80pct,test_events_threshold_120pct,accuracy,wall_seconds,rss_baseline_mb,sampled_peak_rss_mb,rss_increment_mb
+no_change,0,0,404,0.0,0,0,not identifiable: no reference labels,0.00047850003466010094,173.674496,173.744128,0.069632
+rolling_shift,10,44,404,2.4752475247524752,10,9,not identifiable: no reference labels,0.10849119996419176,173.756416,173.973504,0.217088
+cusum,32,129,404,7.920792079207921,36,29,not identifiable: no reference labels,0.09197819995461032,173.99808,174.071808,0.073728

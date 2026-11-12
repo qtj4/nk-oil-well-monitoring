@@ -1,0 +1,310 @@
+{
+  "run_id": "20261112T171150743233Z_full",
+  "summary": {
+    "rows": 258387,
+    "wells": 10,
+    "duplicates": 0,
+    "null_values": 0,
+    "start": "2026-01-01 00:00:00",
+    "end": "2026-09-30 23:00:00",
+    "flags": {
+      "": 251346,
+      "weight_overflow": 4098,
+      "area_negative": 2844,
+      "area_extreme;area_negative": 77,
+      "area_extreme": 20,
+      "spm_outlier": 2
+    },
+    "mode": "full",
+    "sample_selection": "all source rows",
+    "train_rows": 206706,
+    "test_rows": 51681,
+    "long_memory_mb": 9.800458,
+    "wide_rows": 63470,
+    "reconciled_nonnull_values": 258387,
+    "sql_rows": 258387,
+    "parquet_bytes": 2180136,
+    "source_bytes": 19845754,
+    "missing_slot_note": "Source missing hours",
+    "timezone": "naive; undocumented by provider"
+  },
+  "manifest": {
+    "run_id": "20261112T171150743233Z_full",
+    "generated_utc": "2026-11-12T17:11:50.743233+00:00",
+    "mode": "full",
+    "data_hash": "2cd08b95ec4ef563243b392a79005dbca95f90559faa0ff388544e38b44a702e",
+    "source_revision": "4004bb78ca8811a87c2892a89e457c59d22ace2b",
+    "source_hashes": {
+      "train": "8bf92fd97ac9b0d7ec2e7aa61be90f335c7f3b6ab2a84634fb8758b057efe26a",
+      "test": "8029113613ea2965cb94fc7bea50eee6f4c327b673ecc856d88d25dfb652c7d6"
+    },
+    "commit": "cda9620b2617c6e214d4877a0c6180c7dea500eb",
+    "python": "3.12.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "sqlite": "3.45.3",
+    "packages": {
+      "pandas": "3.1.1",
+      "numpy": "2.5.4",
+      "pyarrow": "26.0.1",
+      "streamlit": "1.67.0",
+      "plotly": "7.1.0"
+    },
+    "cutoff": "2026-08-08 23:00:00",
+    "excluded_daily_bin": "2026-08-08",
+    "random_seed": 0,
+    "gpu_used": false,
+    "config": {
+      "daily_min_records": 12,
+      "rolling_days": 3,
+      "cooldown_days": 7,
+      "rolling_threshold": 3,
+      "cusum_threshold": 5,
+      "cusum_drift": 0.5
+    },
+    "memory_measurement": "10 ms process RSS polling; absolute peak includes runtime; may miss short peaks"
+  },
+  "methods": [
+    {
+      "method": "no_change",
+      "test_events": "0",
+      "train_events": "0",
+      "test_daily_units": "1747",
+      "test_events_per_100_days": "0.0",
+      "test_events_threshold_80pct": "0",
+      "test_events_threshold_120pct": "0",
+      "accuracy": "not identifiable: no reference labels",
+      "wall_seconds": "0.0004048999981023371",
+      "rss_baseline_mb": "250.912768",
+      "sampled_peak_rss_mb": "250.978304",
+      "rss_increment_mb": "0.065536"
+    },
+    {
+      "method": "rolling_shift",
+      "test_events": "29",
+      "train_events": "129",
+      "test_daily_units": "1747",
+      "test_events_per_100_days": "1.659988551803091",
+      "test_events_threshold_80pct": "39",
+      "test_events_threshold_120pct": "21",
+      "accuracy": "not identifiable: no reference labels",
+      "wall_seconds": "0.16039199999067932",
+      "rss_baseline_mb": "250.990592",
+      "sampled_peak_rss_mb": "251.363328",
+      "rss_increment_mb": "0.372736"
+    },
+    {
+      "method": "cusum",
+      "test_events": "139",
+      "train_events": "384",
+      "test_daily_units": "1747",
+      "test_events_per_100_days": "7.95649685174585",
+      "test_events_threshold_80pct": "148",
+      "test_events_threshold_120pct": "125",
+      "accuracy": "not identifiable: no reference labels",
+      "wall_seconds": "0.11179009999614209",
+      "rss_baseline_mb": "251.506688",
+      "sampled_peak_rss_mb": "251.723776",
+      "rss_increment_mb": "0.217088"
+    }
+  ],
+  "benchmarks": [
+    {
+      "operation": "chunked_csv_ingest_validation",
+      "wall_seconds": "0.4661965000559576",
+      "rss_baseline_mb": "97.71008",
+      "sampled_peak_rss_mb": "156.73344",
+      "rss_increment_mb": "59.02336"
+    },
+    {
+      "operation": "long_to_wide",
+      "wall_seconds": "0.048425499990116805",
+      "rss_baseline_mb": "125.612032",
+      "sampled_peak_rss_mb": "135.450624",
+      "rss_increment_mb": "9.838592"
+    },
+    {
+      "operation": "sqlite_upsert",
+      "wall_seconds": "1.9470226999837905",
+      "rss_baseline_mb": "200.21248",
+      "sampled_peak_rss_mb": "222.932992",
+      "rss_increment_mb": "22.720512"
+    },
+    {
+      "operation": "eight_sql_queries_pandas",
+      "wall_seconds": "2.8776552000199445",
+      "rss_baseline_mb": "164.16768",
+      "sampled_peak_rss_mb": "274.128896",
+      "rss_increment_mb": "109.961216"
+    },
+    {
+      "operation": "parquet_read",
+      "wall_seconds": "0.0571883000084199",
+      "rss_baseline_mb": "221.597696",
+      "sampled_peak_rss_mb": "248.0128",
+      "rss_increment_mb": "26.415104"
+    }
+  ],
+  "whole": {
+    "wall_seconds": 9.036608199996408,
+    "rss_baseline_mb": 97.673216,
+    "sampled_peak_rss_mb": 277.590016,
+    "rss_increment_mb": 179.9168
+  },
+  "issues": [
+    {
+      "well_id": "NK-68",
+      "issue": "May area scale",
+      "before_n": "477.0",
+      "after_n": "631",
+      "before_median": "15196.287433476182",
+      "after_median": "262716.56714409875",
+      "ratio": "17.288207287087474",
+      "zero_fraction": ""
+    },
+    {
+      "well_id": "NK-7",
+      "issue": "May area scale",
+      "before_n": "477.0",
+      "after_n": "264",
+      "before_median": "3314.34676460541",
+      "after_median": "32972.830313233826",
+      "ratio": "9.948515546217871",
+      "zero_fraction": ""
+    },
+    {
+      "well_id": "NK-77",
+      "issue": "May area scale",
+      "before_n": "477.0",
+      "after_n": "633",
+      "before_median": "13947.312222977243",
+      "after_median": "284069.410338273",
+      "ratio": "20.3673228072064",
+      "zero_fraction": ""
+    },
+    {
+      "well_id": "NK-82",
+      "issue": "May area scale",
+      "before_n": "477.0",
+      "after_n": "568",
+      "before_median": "7452.179742502999",
+      "after_median": "113797.97680610366",
+      "ratio": "15.270428349582694",
+      "zero_fraction": ""
+    },
+    {
+      "well_id": "NK-86",
+      "issue": "May area scale",
+      "before_n": "477.0",
+      "after_n": "446",
+      "before_median": "10554.263170158012",
+      "after_median": "186649.44799776515",
+      "ratio": "17.684744542424628",
+      "zero_fraction": ""
+    },
+    {
+      "well_id": "NK-91",
+      "issue": "May area scale",
+      "before_n": "475.0",
+      "after_n": "415",
+      "before_median": "10510.86542687534",
+      "after_median": "196053.241803994",
+      "ratio": "18.652435726434422",
+      "zero_fraction": ""
+    },
+    {
+      "well_id": "NK-93",
+      "issue": "May area scale",
+      "before_n": "475.0",
+      "after_n": "631",
+      "before_median": "4502.421260067239",
+      "after_median": "64090.387217405354",
+      "ratio": "14.234649206602278",
+      "zero_fraction": ""
+    }
+  ],
+  "monthly_spm": [
+    {
+      "parameter": "SPM",
+      "month": "2026-01",
+      "records": "731",
+      "median": "4.046770978250616",
+      "mean": "4.351713008090518",
+      "zero_fraction": "0.0027359781121751026",
+      "negative_fraction": "0.0"
+    },
+    {
+      "parameter": "SPM",
+      "month": "2026-02",
+      "records": "660",
+      "median": "3.973313374187916",
+      "mean": "3.9613034949057457",
+      "zero_fraction": "0.0",
+      "negative_fraction": "0.0"
+    },
+    {
+      "parameter": "SPM",
+      "month": "2026-03",
+      "records": "726",
+      "median": "5.218720787449625",
+      "mean": "4.729872990886413",
+      "zero_fraction": "0.0",
+      "negative_fraction": "0.0"
+    },
+    {
+      "parameter": "SPM",
+      "month": "2026-04",
+      "records": "681",
+      "median": "5.343874057363751",
+      "mean": "5.39591505818782",
+      "zero_fraction": "0.0",
+      "negative_fraction": "0.0"
+    },
+    {
+      "parameter": "SPM",
+      "month": "2026-05",
+      "records": "742",
+      "median": "1.4739999999999998",
+      "mean": "2.485929302166836",
+      "zero_fraction": "0.4946091644204852",
+      "negative_fraction": "0.0"
+    },
+    {
+      "parameter": "SPM",
+      "month": "2026-06",
+      "records": "711",
+      "median": "1.7442857142857144",
+      "mean": "2.1285184779277606",
+      "zero_fraction": "0.1631504922644163",
+      "negative_fraction": "0.0"
+    },
+    {
+      "parameter": "SPM",
+      "month": "2026-07",
+      "records": "729",
+      "median": "1.4814285714285715",
+      "mean": "1.5212766945369824",
+      "zero_fraction": "0.00411522633744856",
+      "negative_fraction": "0.0"
+    },
+    {
+      "parameter": "SPM",
+      "month": "2026-08",
+      "records": "734",
+      "median": "1.3616666666666666",
+      "mean": "1.3517993166385538",
+      "zero_fraction": "0.03814713896457766",
+      "negative_fraction": "0.0"
+    },
+    {
+      "parameter": "SPM",
+      "month": "2026-09",
+      "records": "706",
+      "median": "1.1663333333333332",
+      "mean": "1.2399997874332152",
+      "zero_fraction": "0.0056657223796034",
+      "negative_fraction": "0.0"
+    }
+  ],
+  "absent_hour_slots": 21014,
+  "source": "https://huggingface.co/datasets/Arailym-tleubayeva/NK-Oil-Well-Sensor-Monitoring-v2"
+}

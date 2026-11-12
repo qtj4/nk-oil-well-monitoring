@@ -1,4 +1,4 @@
-param([string]$Phase = 'phase1')
+param([string]$Phase = 'final')
 $ErrorActionPreference = 'Stop'
 $python = Join-Path $PSScriptRoot '.venv/Scripts/python.exe'
 Set-Location -LiteralPath $PSScriptRoot
@@ -11,8 +11,9 @@ function Run-Check([string[]]$Arguments) {
     if ($LASTEXITCODE -ne 0) { throw "Check failed: $Arguments" }
 }
 Run-Check @('-m','nk_oil.cli','--help')
-Run-Check @('-m','nk_oil.cli','inspect','--phase1')
-Run-Check @('-m','nk_oil.cli','prepare','--phase1')
-Run-Check @('-m','nk_oil.cli','init-db','--phase1')
+Run-Check @('-m','nk_oil.cli','inspect','--mode','sample')
+Run-Check @('-m','nk_oil.cli','prepare','--mode','sample')
+Run-Check @('-m','nk_oil.cli','enhance','--mode','sample')
+Run-Check @('-m','nk_oil.cli','queries','--mode','sample')
 Run-Check @('-m','pytest','-q')
 Run-Check @('-m','ruff','check','.')

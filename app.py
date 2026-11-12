@@ -6,7 +6,7 @@ import pandas as pd
 import streamlit as st
 
 from nk_oil.charts import figures
-from nk_oil.config import ROOT, paths
+from nk_oil.config import MODE, ROOT, paths
 from nk_oil.database import query
 from nk_oil.events import STATUSES, ingest, queue, review
 from nk_oil.reporting import diagnostic
@@ -14,7 +14,7 @@ from nk_oil.reporting import diagnostic
 st.set_page_config(page_title='NK Well Monitoring', layout='wide')
 st.title('NK Well Monitoring · historical data')
 st.caption('Galaz and Company LLP · NK field v2 · analytical decision support · no verified failure labels')
-mode = st.sidebar.selectbox('Data mode', ['sample', 'full'])
+mode = st.sidebar.selectbox('Data mode', ['sample', 'full'], index=1 if MODE == 'full' else 0)
 target = paths(mode)
 if not (target / 'latest_run.txt').exists():
     st.info(f'Prepare cached data: python -m nk_oil.cli fetch; python -m nk_oil.cli prepare --mode {mode}')
