@@ -24,6 +24,7 @@ def figures(df, well, parameter):
     plot_data = break_gaps(selected, ['value', 'prior_24_records_mean'])
     trend = px.line(plot_data, x='timestamp', y=['value', 'prior_24_records_mean'],
                     title=f'{well} · {parameter} ({unit}) · source observations')
+    trend.update_traces(connectgaps=False)
     trend.update_yaxes(title=f'{parameter} ({unit})')
     group = df[df.parameter == parameter]
     distribution = px.box(group, x='well_type', y='value', color='well_id',

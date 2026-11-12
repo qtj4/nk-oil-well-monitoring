@@ -24,4 +24,4 @@ Combined heuristic 81-97/100; this does not predict the instructor's score. Exte
 ## Pass / external status
 PASS: implementation, full source execution, 8 SQL, pivot, sample/full app smoke, temporal invariants, product review→report, tests and clean install. PASS artifacts after visual final QA: academic PDF and editable PPTX.
 
-EXTERNAL: dataset size exception; SCADA year/timezone validation; instructor topic approval; actual team names/contributions; exam/Moodle date and submission. GitHub authorized owner qtj4 only; connector and existing credential identities verified. Private repository created in qtj4; final push follows artifact QA. No repository was published to a different account.
+EXTERNAL: dataset size exception; SCADA year/timezone validation; instructor topic approval; actual team names/contributions; exam/Moodle date and submission. GitHub authorized owner qtj4 only; connector and existing credential identities verified. Private qtj4/nk-oil-well-monitoring contains all phase commits and deliverables, pushed without force. No repository was published to a different account.

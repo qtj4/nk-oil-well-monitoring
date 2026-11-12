@@ -1,6 +1,6 @@
 {
-  "wall_seconds": 3.724281999981031,
-  "rss_baseline_mb": 145.444864,
-  "sampled_peak_rss_mb": 153.014272,
-  "rss_increment_mb": 7.569408
+  "wall_seconds": 3.809029500000179,
+  "rss_baseline_mb": 145.068032,
+  "sampled_peak_rss_mb": 150.822912,
+  "rss_increment_mb": 5.75488
 }

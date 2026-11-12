@@ -5,7 +5,7 @@
 - [x] Full analysis, measurements, sample/offline mode, tests and quality evidence.
 - [x] Academic report Markdown/PDF and presentation content/editable PPTX; final render QA documented.
 - [x] Defense guide and product demo story.
-- [ ] GitHub push pending final commit: ONLY owner **qtj4**. Private repository created at https://github.com/qtj4/nk-oil-well-monitoring after verifying identity via existing qtj4 Git Credential Manager authorization. No other-account upload occurred. Preserve local phase history; push without force. Private visibility is the conservative initial default until sharing decision is explicit.
+- [x] GitHub publication: ONLY owner **qtj4**. Private repository https://github.com/qtj4/nk-oil-well-monitoring . Phase 1/2/2.5/3/4 history pushed to main, implementation commit 49554d0. Existing qtj4 authorization verified before API creation and Git push. No other-account upload occurred. No force-push. Private visibility retained.
 - [ ] Confirm instructor-approved topic and exception/additional legitimate source for recommended size.
 - [ ] Add actual participant names and real contributions, if applicable.
 - [ ] Set actual exam date and Moodle deadline; submit report and presentation 2-3 days before exam. No deadline is invented.

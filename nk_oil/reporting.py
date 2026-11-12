@@ -18,6 +18,7 @@ def diagnostic(data, events, comparison, manifest, well, parameter, begin, finis
     signal = selected[selected.parameter == parameter].sort_values('timestamp')
     unit = str(signal.unit.iloc[0]) if len(signal) else ''
     chart = px.line(break_gaps(signal, ['value']), x='timestamp', y='value', title=f'{well} · {parameter} ({unit})')
+    chart.update_traces(connectgaps=False)
     stats = selected.groupby(['parameter', 'unit'], observed=True).value.agg(['count', 'mean', 'median', 'std', 'min', 'max'])
     flags = selected.groupby(['parameter', 'flag'], observed=True).size().reset_index(name='records')
     coverage = selected.groupby('parameter', observed=True).agg(records=('timestamp', 'size'),
