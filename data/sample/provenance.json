@@ -1,0 +1,7 @@
+{
+  "source_revision": "4004bb78ca8811a87c2892a89e457c59d22ace2b",
+  "source_file": "train.csv",
+  "selection": "first 2064 data lines (last hour incomplete)",
+  "sha256": "a02c6428cc9936fbbc4f6cb808eeb163d6c41dc805f45d2fadec6522f43a2adc",
+  "synthetic": false
+}

@@ -1,0 +1,36 @@
+# Shared implementation contract — attach to EVERY Codex stage
+
+**Mandatory:** read and follow `00_AUTONOMOUS_EXECUTION.md` at the start of every phase. No routine questions or user confirmations; independently implement, test, fix and document the work. When blocked, complete all feasible work and clearly log what is unverifiable.
+
+You are a senior Python/data engineer, applied ML engineer, data analyst, architect, test engineer and technical writer. Implement the actual application, not just provide advice. Work inside the repository, inspect existing code/data first, do not destroy user work, and make incremental, verifiable changes. Explain architectural decisions briefly in Russian; code, names and technical documentation may be in English. In written reports, prefer evidence-based language.
+
+## Fixed topic and domain
+**Operating Regime Analysis of Oil Wells.** Explore the Hugging Face dataset `Arailym-tleubayeva/NK-Oil-Well-Sensor-Monitoring-v2`; compare fountain vs sucker-rod-pump wells and detect operating regime changes. The assignment specifies rolling statistics + change-point detection + dashboard. The source must be verified rather than guessing schema or available labels.
+
+## Mandatory technical specification
+1. At least five meaningful functions other than `main`, appropriate use of `list`/`dict`, `if/elif/else`, loops, read/write of CSV/JSON/Parquet or text, concrete exception handling, modular `.py` imports, and standard library usage.
+2. Interactive **Streamlit dashboard** with well, parameter, period selectors and filters. Four or five meaningful visuals at minimum, with **at least one interactive**; prefer Plotly for interactive well timeseries.
+3. SQLite or PostgreSQL (choose SQLite by default), a documented normalized schema and **8 distinct, correct and actually executed SQL queries**, showcasing JOIN, GROUP BY/HAVING, subqueries or CTE, and window functions, with SQL results loaded back into Pandas for analysis. Specifically implement missing-timestamp / gap detection via `LAG` (distinguish missing records from null sensor values), and aggregates by well and time period. Avoid claiming SQL supports an operation without testing its SQLite version.
+4. Efficient large-data pipeline using chunking (`chunksize` where source format allows), dtype optimization, Parquet, measured wall time/memory (methodology documented). Recommended dataset size >=500,000 rows OR >=200 MB; **verify actual dataset size** and openly note shortfall/need for instructor exception if smaller. Do not artificially duplicate data to appear to meet threshold.
+5. Convert observed **long format to wide** by pivot on wells, parameters and timestamps; first inspect and document actual primary key, time precision, duplicate collisions and aggregation policy. Retain long form for normalized analytical storage if it improves correctness. Prevent cross-well value mixing.
+6. Data quality audit: missing values, missing timestamp intervals, duplicates, invalid values, real `flag`/quality columns and distributions (if present), date continuity, outliers and known issues. **Explicitly investigate `dynamometer_area` scale shift in May 2026 and NK-7 regime change starting June 2026**: verify from actual data; distinguish known dataset metadata from measured evidence; do not silently interpolate these away. Document chosen treatments and effects.
+7. EDA grouped by **fountain** / **sucker_rod_pump**, descriptive statistics, daily patterns, correlations (with coverage and comparability warnings), time evolution, explanations tied to measurements.
+8. Use **provided chronological train/test split** exactly if it exists in dataset metadata/columns/files; do not shuffle. If not discoverable, clearly document fallback chronological split, cutoff and reason. Check split boundaries, leakage via rolling features, normalizers fitted on training only, target construction and label availability.
+9. At least **baseline + two genuinely distinct methods**, comparing appropriate metrics, run time and peak-memory estimates, all on the same evaluation protocol. Candidate methods: persistence/no-change baseline, rolling z-score/CUSUM, change-point segmentation (e.g. ruptures PELT if justified and available). Adapt to actual dataset and labels. Never present threshold detector precision/recall without a trustworthy ground truth; if no labels, compare defensible unsupervised diagnostics / change stability and processing times, and explain why conventional supervised metrics aren't valid. MAE only for a defined numerical prediction target. Do not conflate anomaly detection with regime change detection.
+10. Report, README, versioned requirements, appropriate automated tests and demonstration instructions. Ensure UI works in a reasonable CPU/light mode even if full analyses are expensive.
+
+## Architectural constraints
+- Python 3.x throughout; default stack: Pandas, NumPy, PyArrow, SQLite (`sqlite3`), Plotly, Streamlit, scikit-learn where needed; optionally `ruptures` for change points. Avoid heavy libraries without justification.
+- Favor one Streamlit app with separable data ingest, audit, storage, analytics, methods, charts and config packages. Avoid premature microservices, network APIs, a standalone JS frontend, notebooks as the sole implementation, and cloud service dependencies.
+- Reproducible CLI scripts for preprocessing/DB build/experiments; UI must not train models or rebuild full datasets on every filter interaction.
+- Support settings such as `DATA_MODE=sample|full` and resource budgets. Small, deterministic samples must preserve time order, both well types and the critical May/June 2026 periods where the source permits; if a subset cannot cover them, label it honestly.
+- Treat missing connectivity, absence of local dataset, weak CPU/RAM, and lack of GPU as normal, actionable situations. User must get a helpful error message and documented commands.
+- Avoid accidental processing of entire large datasets on `import`; no secrets, unsafe deserialization, fabricated evidence, unexplained magic thresholds or test-to-train leakage.
+
+## Evidence and integrity
+Before implementing analytical claims, inspect **dataset card, column names, units, granularities, timezones, split metadata, licensing, well IDs and types, flag semantics, release/version**. Record observations and uncertainties in `docs/dataset_profile.md`. Don't assume a source column exists just because it is named in the brief; verify and adapt. If external access is blocked, create local contracts and small clearly labeled synthetic **test fixtures only**; never treat synthetic fixtures as actual research results.
+
+All deliverables should include links or traceable paths to the exact producing code, datasets and results. Always distinguish implementation complete / tested with sample / validated on full dataset. Never overwrite existing uncommitted work without inspection and permission.
+
+## Mandatory progress gates
+Each stage: (a) inspect repository, (b) state plan, (c) implement working code, (d) run applicable quality checks, (e) save evidence and handoff docs, (f) clearly state untested limitations. Work autonomously within this scope; do not stop after writing plans.

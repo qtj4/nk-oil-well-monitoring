@@ -1,0 +1,4 @@
+# Phase 1 handoff
+Source card and metadata verified, pinned revision stored. Working vertical slice uses genuine bounded first source slice. Full rubric is not claimed. CLI validation, safe pivot, Parquet and idempotent SQLite are implemented. Run/test evidence in `results/phase1_checks.txt` after checks. Next: full phase 2 UI, SQL, quality/EDA and methods on monthly sample. January-only phase 1 slice cannot verify May/June issues.
+
+Phase 1 verified: CLI help/inspect/prepare/init-db all exit 0; 7 pytest tests passed (including Streamlit AppTest); ruff passed. Initial checks ran before Streamlit installation completed and exposed a relative AppTest path issue; fixed and rerun successfully. Evidence: results/phase1_checks.txt. Long/SQLite count 2,064; duplicate keys 0. No full-data validation yet.

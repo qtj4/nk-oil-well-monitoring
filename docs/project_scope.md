@@ -1,0 +1,2 @@
+# Scope
+Compare observed sensor regimes of fountain and sucker-rod-pump wells. An analyst investigates level changes, quality context and candidate events; no causal production diagnosis is supported. A regime shift is a sustained distribution change; an anomaly is an isolated departure; a calibration artifact can mimic either. No verified failure labels exist. Historical single-user research tool only.

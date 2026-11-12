@@ -1,0 +1,28 @@
+{
+  "rows": 2064,
+  "wells": {
+    "NK-68": 242,
+    "NK-7": 240,
+    "NK-75": 144,
+    "NK-76": 95,
+    "NK-77": 240,
+    "NK-82": 240,
+    "NK-83": 143,
+    "NK-86": 240,
+    "NK-91": 240,
+    "NK-93": 240
+  },
+  "parameters": [
+    "SPM",
+    "casing_pressure",
+    "dynamometer_area",
+    "line_pressure",
+    "max_rod_weight",
+    "min_rod_weight",
+    "pump_fillage",
+    "tubing_pressure"
+  ],
+  "first": "2026-01-01 00:00:00",
+  "last": "2026-01-03 00:00:00",
+  "null_values": 0
+}

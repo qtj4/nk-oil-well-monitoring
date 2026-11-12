@@ -1,0 +1,262 @@
+COMMAND: python -m nk_oil.cli --help
+usage: cli.py [-h] [--mode {sample,full}] [--phase1]
+              {fetch,prepare,inspect,init-db}
+
+NK historical oil-well analytics
+
+positional arguments:
+  {fetch,prepare,inspect,init-db}
+
+options:
+  -h, --help            show this help message and exit
+  --mode {sample,full}
+  --phase1              Use bounded first source slice
+EXIT: 0
+COMMAND: python -m nk_oil.cli inspect --phase1
+{
+  "rows": 2064,
+  "wells": 10,
+  "duplicates": 0,
+  "null_values": 0,
+  "start": "2026-01-01 00:00:00",
+  "end": "2026-01-03 00:00:00",
+  "flags": {
+    "": 2064
+  }
+}
+EXIT: 0
+COMMAND: python -m nk_oil.cli prepare --phase1
+{
+  "rows": 2064,
+  "wells": 10,
+  "duplicates": 0,
+  "null_values": 0,
+  "start": "2026-01-01 00:00:00",
+  "end": "2026-01-03 00:00:00",
+  "flags": {
+    "": 2064
+  }
+}
+EXIT: 0
+COMMAND: python -m nk_oil.cli init-db --phase1
+{
+  "rows": 2064,
+  "wells": 10,
+  "duplicates": 0,
+  "null_values": 0,
+  "start": "2026-01-01 00:00:00",
+  "end": "2026-01-03 00:00:00",
+  "flags": {
+    "": 2064
+  }
+}
+EXIT: 0
+COMMAND: python -m pytest -q
+
+=================================== ERRORS ====================================
+_____________________ ERROR collecting tests/test_app.py ______________________
+ImportError while importing test module 'C:\Users\LAPTOPE\Documents\Codex\2026-11-12\files-mentioned-by-the-user-00\outputs\nk_oil\tests\test_app.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\LAPTOPE\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_app.py:1: in <module>
+    from streamlit.testing.v1 import AppTest
+E   ModuleNotFoundError: No module named 'streamlit'
+=========================== short test summary info ===========================
+ERROR tests/test_app.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.95s
+EXIT: 2
+COMMAND: python -m nk_oil.cli --help
+usage: cli.py [-h] [--mode {sample,full}] [--phase1]
+              {fetch,prepare,inspect,init-db}
+
+NK historical oil-well analytics
+
+positional arguments:
+  {fetch,prepare,inspect,init-db}
+
+options:
+  -h, --help            show this help message and exit
+  --mode {sample,full}
+  --phase1              Use bounded first source slice
+EXIT: 0
+COMMAND: python -m nk_oil.cli inspect --phase1
+{
+  "rows": 2064,
+  "wells": 10,
+  "duplicates": 0,
+  "null_values": 0,
+  "start": "2026-01-01 00:00:00",
+  "end": "2026-01-03 00:00:00",
+  "flags": {
+    "": 2064
+  }
+}
+EXIT: 0
+COMMAND: python -m nk_oil.cli prepare --phase1
+{
+  "rows": 2064,
+  "wells": 10,
+  "duplicates": 0,
+  "null_values": 0,
+  "start": "2026-01-01 00:00:00",
+  "end": "2026-01-03 00:00:00",
+  "flags": {
+    "": 2064
+  }
+}
+EXIT: 0
+COMMAND: python -m nk_oil.cli init-db --phase1
+{
+  "rows": 2064,
+  "wells": 10,
+  "duplicates": 0,
+  "null_values": 0,
+  "start": "2026-01-01 00:00:00",
+  "end": "2026-01-03 00:00:00",
+  "flags": {
+    "": 2064
+  }
+}
+EXIT: 0
+COMMAND: python -m pytest -q
+F......                                                                  [100%]
+================================== FAILURES ===================================
+______________________________ test_app_startup _______________________________
+
+    def test_app_startup():
+>       at = AppTest.from_file('app.py', default_timeout=30).run()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_app.py:5: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cls = <class 'streamlit.testing.v1.app_test.AppTest'>
+script_path = WindowsPath('app.py'), default_timeout = 30
+
+    @classmethod
+    def from_file(
+        cls, script_path: str | Path, *, default_timeout: float = 3
+    ) -> AppTest:
+        """
+        Create an ``AppTest`` for an app entrypoint defined in a file.
+    
+        This option is most convenient for CI workflows and testing of
+        published apps. The script must be executable on its own and so must
+        contain all necessary imports. For a multipage app, pass the main
+        script that you would supply to ``streamlit run``. To test a
+        file-based child page, initialize from the main script and use
+        ``AppTest.switch_page()``.
+    
+        Parameters
+        ----------
+        script_path: str | Path
+            Path to the app's entrypoint script. An absolute path is used as
+            given. A relative path is resolved against the Python file that
+            calls ``AppTest.from_file()``.
+    
+        default_timeout: float
+            Default time in seconds before a script run is timed out. Can be
+            overridden for individual ``.run()`` calls.
+    
+        Returns
+        -------
+        AppTest
+            A simulated Streamlit app for testing. The simulated app can be
+            executed via ``.run()``.
+    
+        Raises
+        ------
+        FileNotFoundError
+            If ``script_path`` does not point to an existing file.
+    
+        Examples
+        --------
+        Initialize a multipage app from its entrypoint, then switch to a page:
+    
+        >>> at = AppTest.from_file("app.py").run()
+        >>> at.switch_page("pages/settings.py").run()
+        """
+        script_path = Path(script_path)
+        if script_path.is_absolute():
+            path = script_path
+        else:
+            stack = traceback.StackSummary.extract(traceback.walk_stack(None))
+            caller_file = Path(stack[1].filename)
+            path = caller_file.parent / script_path
+    
+        if not path.is_file():
+>           raise FileNotFoundError(
+                f"AppTest script not found at {path.resolve()}. Relative paths are "
+                "resolved against the file that calls AppTest.from_file()."
+            )
+E           FileNotFoundError: AppTest script not found at C:\Users\LAPTOPE\Documents\Codex\2026-11-12\files-mentioned-by-the-user-00\outputs\nk_oil\tests\app.py. Relative paths are resolved against the file that calls AppTest.from_file().
+
+.venv\Lib\site-packages\streamlit\testing\v1\app_test.py:619: FileNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_app.py::test_app_startup - FileNotFoundError: AppTest scrip...
+1 failed, 6 passed in 2.22s
+EXIT: 1
+COMMAND: python -m nk_oil.cli --help
+usage: cli.py [-h] [--mode {sample,full}] [--phase1]
+              {fetch,prepare,inspect,init-db}
+
+NK historical oil-well analytics
+
+positional arguments:
+  {fetch,prepare,inspect,init-db}
+
+options:
+  -h, --help            show this help message and exit
+  --mode {sample,full}
+  --phase1              Use bounded first source slice
+EXIT: 0
+COMMAND: python -m nk_oil.cli inspect --phase1
+{
+  "rows": 2064,
+  "wells": 10,
+  "duplicates": 0,
+  "null_values": 0,
+  "start": "2026-01-01 00:00:00",
+  "end": "2026-01-03 00:00:00",
+  "flags": {
+    "": 2064
+  }
+}
+EXIT: 0
+COMMAND: python -m nk_oil.cli prepare --phase1
+{
+  "rows": 2064,
+  "wells": 10,
+  "duplicates": 0,
+  "null_values": 0,
+  "start": "2026-01-01 00:00:00",
+  "end": "2026-01-03 00:00:00",
+  "flags": {
+    "": 2064
+  }
+}
+EXIT: 0
+COMMAND: python -m nk_oil.cli init-db --phase1
+{
+  "rows": 2064,
+  "wells": 10,
+  "duplicates": 0,
+  "null_values": 0,
+  "start": "2026-01-01 00:00:00",
+  "end": "2026-01-03 00:00:00",
+  "flags": {
+    "": 2064
+  }
+}
+EXIT: 0
+COMMAND: python -m pytest -q
+.......                                                                  [100%]
+7 passed in 2.89s
+EXIT: 0
+COMMAND: python -m ruff check .
+All checks passed!
+EXIT: 0
